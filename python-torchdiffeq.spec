@@ -12,9 +12,8 @@ URL:            https://github.com/rtqichen/%{pypi_name}
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 Source:         %{url}/archive/%{commit}/%{pypi_name}-%{shortcommit}.tar.gz
 
-# Only x86_64 tested
-ExclusiveArch:  x86_64
 BuildArch:      noarch
+ExclusiveArch:  x86_64 aarch64
 
 BuildRequires:  python3-devel
 
@@ -60,6 +59,9 @@ export PYTHONPATH=$PYTHONPATH:%{buildroot}%{python3_sitelib}/%{pypi_name}
 
 %files -n python3-%{pypi_name} -f %{pyproject_files}
 %doc README.md
+%doc examples
+%doc FURTHER_DOCUMENTATION.md
+%doc FAQ.md
 
 %changelog
 %autochangelog
